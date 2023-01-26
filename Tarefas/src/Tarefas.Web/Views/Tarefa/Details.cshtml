@@ -4,14 +4,15 @@
 
    <div class="form-group">
         <label asp-for="Titulo">@Html.DisplayNameFor(model => model.Titulo)</label>
-        @Html.TextBoxFor(model => model.Titulo, new { @class = "form-control", @readonly = "true" })
+        @Html.TextBoxFor(model => model.Titulo, new { @class = "form-control", @disabled = "true" })
     </div>
 
     <div class="form-group">
         <label asp-for="Descricao">@Html.DisplayNameFor(model => model.Descricao)</label>
-        @Html.TextAreaFor(model => model.Descricao, new { @class = "form-control", @readonly = "true" })
+        @Html.TextAreaFor(model => model.Descricao, new { @class = "form-control", @disabled = "true" })
     </div>
         
-    <input type="submit" class="btn btn-primary" />
-        
+    <input asp-formaction="Id" hidden/>
+    <input asp-for="Concluida" hidden/>
+    <td><a asp-controller="Tarefa" asp-action="Index" asp-route-id="@Model.Id">Voltar</a></td>
 </form>
