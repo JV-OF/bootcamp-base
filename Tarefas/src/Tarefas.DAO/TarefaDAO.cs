@@ -89,5 +89,16 @@ namespace Tarefas.DAO
             }
         }
 
+        public void Excluir(int id)
+        {
+            using (var con = Connection)
+            {
+                con.Open();
+                con.Execute(
+                    @"DELETE FROM Tarefa
+                    WHERE Id = @Id", new{id}
+                );
+            }
+        }
     }
 }
