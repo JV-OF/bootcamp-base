@@ -1,7 +1,7 @@
 @model IEnumerable<Tarefas.Web.Models.TarefaViewModel>
 
 <table class="table">
-    <thead>
+    <thead style="background-color: #2eeb4a;">
         <tr>
             <th>@Html.DisplayNameFor(model => model.Titulo)</th>
             <th>@Html.DisplayNameFor(model => model.Descricao)</th>
@@ -9,16 +9,16 @@
             <th>Ações</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody style="color: #e8eb2e; background-color: #3d8147;">
         @foreach (var item in Model)
         {
             <tr>
                 <td>@item.Titulo</td>
                 <td>@item.Descricao</td>
                 <td>@item.Concluida</td>
-                <td><a asp-controller="Tarefa" asp-action="Details" asp-route-id="@item.Id">Detalhes</a></td>
-                <td><a asp-controller="Tarefa" asp-action="Update" asp-route-id="@item.Id">Atualizar</a></td>
-                <td><a asp-controller="Tarefa" asp-action="Delete" asp-route-id="@item.Id">Excluir</a></td>
+                <td><a class="text-white" asp-controller="Tarefa" asp-action="Details" asp-route-id="@item.Id">Detalhes</a></td>
+                <td><a class="text-white" asp-controller="Tarefa" asp-action="Update" asp-route-id="@item.Id">Atualizar</a></td>
+                <td><a class="text-white" asp-controller="Tarefa" asp-action="Delete" asp-route-id="@item.Id">Excluir</a></td>
             </tr>
         }
     </tbody>

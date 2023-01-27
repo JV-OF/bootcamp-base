@@ -9,9 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //Classes DAO
-{
 builder.Services.AddTransient<ITarefaDAO, TarefaDAO>();
-}
+var config = new AutoMapper.MapperConfiguration(c=>c.CreateMap<TarefaViewModel,TarefaDTO>().ReverseMap());
+
+IMapper mapper=config.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 var app = builder.Build();
 
@@ -35,10 +37,3 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
-
-var config = new AutoMapper.MapperConfiguration(c=>{
-    c.CreateMap<TarefaViewModel, TarefaDTO>().ReverseMap();
-});
-
-IMapper mapper = config.CreateMapper();
-builder.Services.AddSingleton(mapper);

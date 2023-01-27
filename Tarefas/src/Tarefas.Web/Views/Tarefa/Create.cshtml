@@ -7,7 +7,8 @@
     }
 }
 
-<form asp-action="Create">
+<form class="text-warning fw-bold" asp-action="Create">
+
 
     @Html.ValidationSummary()
 
@@ -21,6 +22,6 @@
         @Html.TextAreaFor(model => model.Descricao, new { @class = "form-control" })
     </div>
         
-    <input type="submit" class="btn btn-primary" value="Criar" />
+    <input type="submit" class="btn btn-primary rounded-pill" value="Criar" />
         
 </form>

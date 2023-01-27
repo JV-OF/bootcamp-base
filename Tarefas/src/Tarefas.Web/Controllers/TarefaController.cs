@@ -11,11 +11,6 @@ namespace Tarefas.Web.Controllers
     {
         private readonly ITarefaDAO _tarefaDAO;
 
-        public TarefaController(ITarefaDAO tarefaDAO)
-        {
-            _tarefaDAO=tarefaDAO;
-        }
-
         private readonly IMapper _mapper;
 
         public TarefaController(IMapper mapper, ITarefaDAO tarefaDAO)
@@ -30,13 +25,7 @@ namespace Tarefas.Web.Controllers
         { 
             var tarefaDTO = _tarefaDAO.Consultar(id);
 
-            var tarefa = new TarefaViewModel()
-            {
-                Id = tarefaDTO.Id,
-                Titulo = tarefaDTO.Titulo,
-                Descricao = tarefaDTO.Descricao,
-                Concluida = tarefaDTO.Concluida
-            };
+            var tarefa = _mapper.Map<TarefaViewModel>(tarefaDTO);
                 return View(tarefa);
         }
         
